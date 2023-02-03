@@ -36,6 +36,7 @@ export async function searchMovieById(id) {
       return;
     }
 
+    console.log(fetchAPI.data);
     return fetchAPI.data;
   } catch (error) {
     console.error('Something is wrong with the search' + error);
