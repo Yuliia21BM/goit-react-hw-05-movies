@@ -1,23 +1,33 @@
-export const ModieCast = ({ data }) => {
+import { useState, useEffect } from 'react';
+import { searchMovieCasts } from '../../fetchApi';
+import { CastList, CastItem, CastName } from './MovieCast.styled';
+
+export const MovieCast = ({ id }) => {
+  const [cast, setCast] = useState([]);
+  useEffect(() => {
+    if (!id) return;
+    searchMovieCasts(id).then(({ cast }) => setCast(cast));
+  }, [id]);
   const POSTER_URL = 'https://image.tmdb.org/t/p/w500';
   return (
-    <ul>
-      {data.map(item => {
+    <CastList>
+      {cast.map(item => {
         return (
-          <li>
+          <CastItem key={item.id}>
             <img
+              width="100%"
               src={
-                data.poster_path ? POSTER_URL + data.poster_path : ''
+                item.profile_path ? POSTER_URL + item.profile_path : ''
                 //   defaultPoster.src
               }
-              alt={data.title ? data.title : 'Unknown'}
+              alt={item.name ? item.name : 'Unknown'}
               loading="lazy"
             ></img>
-            <h1>Name</h1>
-            <p>Character: ...</p>
-          </li>
+            <CastName>{item.name ? item.name : 'Unknown'}</CastName>
+            <p>{item.character ? item.character : 'uncnown'}</p>
+          </CastItem>
         );
       })}
-    </ul>
+    </CastList>
   );
 };

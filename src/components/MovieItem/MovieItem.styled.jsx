@@ -3,7 +3,6 @@ import styled from 'styled-components';
 export const MovieLi = styled.li`
   position: relative;
   width: 100%;
-  /* background-color: #3b3b3b; */
   cursor: pointer;
 
   display: flex;

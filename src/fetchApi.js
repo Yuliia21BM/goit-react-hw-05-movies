@@ -36,14 +36,13 @@ export async function searchMovieById(id) {
       return;
     }
 
-    console.log(fetchAPI.data);
     return fetchAPI.data;
   } catch (error) {
     console.error('Something is wrong with the search' + error);
   }
 }
 
-export async function searchMovieCredits(id) {
+export async function searchMovieCasts(id) {
   try {
     const fetchAPI = await axios.get(
       `${BASE_URL}/movie/${id}/credits?api_key=${API_KEY}`

@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import {
   MovieLi,
   MovieCardDescription,
@@ -8,8 +9,15 @@ import {
 export const MovieItem = ({ data }) => {
   const POSTER_URL = 'https://image.tmdb.org/t/p/w500';
 
+  const [movieId, setMovieId] = useState('');
+
+  const hadleMovieClick = e => {
+    setMovieId(e.currentTarget.dataset.filmId);
+    console.log(movieId);
+  };
+
   return (
-    <MovieLi>
+    <MovieLi data-film-id={data.id} onClick={hadleMovieClick}>
       <img
         width="100%"
         src={
@@ -19,7 +27,7 @@ export const MovieItem = ({ data }) => {
         alt={data.title ? data.title : 'Unknown'}
         loading="lazy"
       ></img>
-      <MovieCardDescription data-film-id={data.id}>
+      <MovieCardDescription>
         <CardTitle>{data.title ? data.title : 'Unknown title'}</CardTitle>
       </MovieCardDescription>
       <MovieDate>
