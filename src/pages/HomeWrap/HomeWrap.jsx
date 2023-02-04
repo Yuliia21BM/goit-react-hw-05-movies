@@ -3,7 +3,6 @@ import { useState, useEffect } from 'react';
 import { Container, HomeTitle } from './HomeWrap.styled';
 import { getPopularFilm } from '../../fetchApi';
 import { Movielist } from '../../components/MovieList/MovieList';
-import { MovieItem } from '../../components/MovieItem/MovieItem';
 
 export const HomeWrap = () => {
   const [movies, setMovies] = useState([]);
@@ -27,15 +26,7 @@ export const HomeWrap = () => {
   return (
     <Container>
       <HomeTitle>Trending today</HomeTitle>
-      <Movielist>
-        {movies !== [] ? (
-          movies.map(movie => {
-            return <MovieItem key={movie.id} data={movie} />;
-          })
-        ) : (
-          <div>Something went wrong :(</div>
-        )}
-      </Movielist>
+      <Movielist movies={movies} />
     </Container>
   );
 };
