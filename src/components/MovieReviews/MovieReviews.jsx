@@ -1,9 +1,11 @@
 import { useState, useEffect } from 'react';
 import { searchMovieReviews } from '../../fetchApi';
+import { useParams } from 'react-router-dom';
 
 import { ReviewerTitle, ReviewName } from './MovieReviews.styled';
 
-export const MovieReview = ({ id }) => {
+export const MovieReview = () => {
+  const { id } = useParams();
   const [review, setReview] = useState([]);
   const [isReview, setIsReview] = useState(true);
   useEffect(() => {

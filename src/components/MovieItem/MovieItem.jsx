@@ -1,11 +1,12 @@
 import { useState } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 
 import {
   MovieLi,
   MovieCardDescription,
   CardTitle,
   MovieDate,
+  MovieLink,
 } from './MovieItem.styled';
 
 export const MovieItem = ({ data }) => {
@@ -21,7 +22,7 @@ export const MovieItem = ({ data }) => {
 
   return (
     <MovieLi data-film-id={data.id} onClick={hadleMovieClick}>
-      <Link to={`${data.id}`} state={{ from: location }}>
+      <MovieLink to={`${data.id}`} state={{ from: location }}>
         <img
           width="100%"
           src={
@@ -37,7 +38,7 @@ export const MovieItem = ({ data }) => {
         <MovieDate>
           {data.release_date ? data.release_date.slice(0, 4) : 'n/a'}
         </MovieDate>
-      </Link>
+      </MovieLink>
     </MovieLi>
   );
 };

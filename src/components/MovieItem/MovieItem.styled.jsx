@@ -1,13 +1,11 @@
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 export const MovieLi = styled.li`
   position: relative;
   width: 100%;
   cursor: pointer;
 
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
   padding-bottom: 5px;
   transition: box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1),
     transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
@@ -27,6 +25,13 @@ export const MovieLi = styled.li`
     border-radius: 5px;
     transform: scale(1.025);
   }
+`;
+
+export const MovieLink = styled(Link)`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  text-decoration: none;
 `;
 
 export const MovieCardDescription = styled.div`

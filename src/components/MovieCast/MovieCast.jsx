@@ -1,8 +1,10 @@
 import { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 import { searchMovieCasts } from '../../fetchApi';
 import { CastList, CastItem, CastName } from './MovieCast.styled';
 
-export const MovieCast = ({ id }) => {
+export const MovieCast = () => {
+  const { id } = useParams();
   const [cast, setCast] = useState([]);
   useEffect(() => {
     if (!id) return;

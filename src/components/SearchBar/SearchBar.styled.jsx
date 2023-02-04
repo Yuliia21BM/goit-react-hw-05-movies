@@ -5,11 +5,13 @@ export const SearchForm = styled.form`
   gap: 10px;
   justify-content: center;
   align-items: center;
+  margin-bottom: 20px;
   @media screen and (min-width: 768px) {
-    transform: translateY(-60px);
+    transform: translateY(-80px);
+    margin-bottom: 0;
   }
   @media screen and (min-width: 1280px) {
-    transform: translateY(-70px);
+    transform: translateY(-90px);
   }
 `;
 

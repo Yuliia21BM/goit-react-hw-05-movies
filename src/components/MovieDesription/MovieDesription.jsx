@@ -1,6 +1,5 @@
-import { MovieCast } from '../MovieCast/MovieCast';
-import { MovieReview } from '../MovieReviews/MovieReviews';
-import { useState } from 'react';
+import { Suspense } from 'react';
+import { Link, Outlet } from 'react-router-dom';
 import {
   DescriptionMovie,
   MovieImage,
@@ -8,13 +7,6 @@ import {
 } from './MovieDesription.styled';
 
 export const MovieDescription = ({ data }) => {
-  const [additionalInfo, setAdditionalInfo] = useState(null);
-  const handleCastClick = () => {
-    setAdditionalInfo('cast');
-  };
-  const handleReviewClick = () => {
-    setAdditionalInfo('review');
-  };
   const POSTER_URL = 'https://image.tmdb.org/t/p/w500';
   return (
     <>
@@ -50,18 +42,15 @@ export const MovieDescription = ({ data }) => {
       <h2>Additional information</h2>
       <ul>
         <li>
-          <a href="#cast" onClick={handleCastClick}>
-            Cast
-          </a>
+          <Link to="movieCast">Cast</Link>
         </li>
         <li>
-          <a href="#reviews" onClick={handleReviewClick}>
-            Reviews
-          </a>
+          <Link to="movieReview">Reviews</Link>
         </li>
       </ul>
-      {additionalInfo === 'cast' && <MovieCast id={data.id} />}
-      {additionalInfo === 'review' && <MovieReview id={data.id} />}
+      <Suspense fallback={<div>Loading subpage...</div>}>
+        <Outlet />
+      </Suspense>
     </>
   );
 };

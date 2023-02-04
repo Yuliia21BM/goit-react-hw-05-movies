@@ -9,7 +9,6 @@ export const HomeWrap = () => {
   const getTrending = async () => {
     try {
       const { results } = await getPopularFilm();
-      console.log(results);
       if (!results || results === []) {
         setMovies([]);
         return;
