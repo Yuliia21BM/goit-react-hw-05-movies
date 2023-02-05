@@ -4,7 +4,7 @@ export const Container = styled.div`
   margin-left: auto;
   margin-right: auto;
   padding: 10px;
-  outline: red 1px solid;
+  /* outline: red 1px solid; */
   @media screen and (min-width: 480px) {
     width: 480px;
   }

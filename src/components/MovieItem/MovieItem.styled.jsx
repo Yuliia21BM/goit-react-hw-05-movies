@@ -30,6 +30,7 @@ export const MovieLi = styled.li`
 export const MovieLink = styled(Link)`
   display: flex;
   flex-direction: column;
+  gap: 16px;
   justify-content: space-between;
   text-decoration: none;
 `;
@@ -42,6 +43,7 @@ export const MovieCardDescription = styled.div`
 export const CardTitle = styled.h2`
   font-family: 'Roboto';
   font-style: normal;
+  /* padding: 8px; */
   font-weight: 500;
   font-size: 12px;
   line-height: 16px;
@@ -58,8 +60,8 @@ export const CardTitle = styled.h2`
   @media screen and (min-width: 1280px) {
     font-weight: 500;
 
-    font-size: 16px;
-    line-height: 20px;
+    font-size: 18px;
+    /* line-height: 20px; */
   }
 `;
 
@@ -72,7 +74,7 @@ export const MovieDate = styled.span`
   text-align: center;
   text-transform: uppercase;
   color: #ffffff;
-  background-color: #ff6b08;
+  background-color: #ff2d08;
   border-radius: 5px;
   margin-left: 8px;
   padding: 1px 0;

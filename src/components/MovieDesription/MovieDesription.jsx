@@ -1,9 +1,14 @@
 import { Suspense } from 'react';
-import { Link, Outlet } from 'react-router-dom';
+import { Outlet } from 'react-router-dom';
 import {
   DescriptionMovie,
   MovieImage,
   InfoMovie,
+  MovieName,
+  MovieAverage,
+  MovieAddition,
+  MovieAdditionalLict,
+  AdditionalItem,
 } from './MovieDesription.styled';
 
 export const MovieDescription = ({ data }) => {
@@ -20,34 +25,38 @@ export const MovieDescription = ({ data }) => {
           loading="lazy"
         ></MovieImage>
         <InfoMovie>
-          <h1>
+          <MovieName>
             {data.title ? data.title : 'Unknown title'} ({' '}
             {data.release_date ? data.release_date.slice(0, 4) : 'n/a'})
-          </h1>
-          <p>
-            User Score{' '}
+          </MovieName>
+          <MovieAverage>
             {data.vote_average
               ? data.vote_average.toFixed(1) * 10 + '%'
               : 'n/a'}
-          </p>
-          <h3>
-            Genres:{' '}
-            {data.genres
-              ? data.genres.map(genre => genre.name).join(', ')
-              : 'no genres'}
-          </h3>
-          <p>{data.overview ? data.overview : 'No description'}</p>
+          </MovieAverage>
+          <div>
+            <MovieAddition>Genres: </MovieAddition>
+            <p>
+              {data.genres
+                ? data.genres.map(genre => genre.name).join(', ')
+                : 'no genres'}
+            </p>
+          </div>
+          <div>
+            <MovieAddition>Description:</MovieAddition>
+            <p>{data.overview ? data.overview : 'No description'}</p>
+          </div>
+          <MovieAddition>Additional information:</MovieAddition>
+          <MovieAdditionalLict>
+            <li>
+              <AdditionalItem to="movieCast">Cast</AdditionalItem>
+            </li>
+            <li>
+              <AdditionalItem to="movieReview">Reviews</AdditionalItem>
+            </li>
+          </MovieAdditionalLict>
         </InfoMovie>
       </DescriptionMovie>
-      <h2>Additional information</h2>
-      <ul>
-        <li>
-          <Link to="movieCast">Cast</Link>
-        </li>
-        <li>
-          <Link to="movieReview">Reviews</Link>
-        </li>
-      </ul>
       <Suspense fallback={<div>Loading subpage...</div>}>
         <Outlet />
       </Suspense>

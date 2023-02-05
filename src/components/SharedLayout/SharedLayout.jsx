@@ -1,5 +1,6 @@
 import { Suspense } from 'react';
 import { Outlet } from 'react-router-dom';
+import { ScrollToTop } from '../ButtonScpollToTop/BtnScrollToTop';
 import {
   StyledHeader,
   Container,
@@ -18,6 +19,7 @@ export const SharedLayout = () => {
           <HeaderLink to="/movieWrap">Movies</HeaderLink>
         </HeaderNav>
       </Container>
+      <ScrollToTop />
       <Suspense fallback={<div>Loading page...</div>}>
         <Outlet />
       </Suspense>

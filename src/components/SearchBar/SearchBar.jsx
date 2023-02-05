@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { SearchInput, SearchForm } from './SearchBar.styled';
+import { SearchInput, SearchForm, SearchButton } from './SearchBar.styled';
 
 export const SearchBar = ({ onSubmit }) => {
   const [request, setRequest] = useState('');
@@ -15,9 +15,9 @@ export const SearchBar = ({ onSubmit }) => {
         value={request}
         onChange={e => setRequest(e.currentTarget.value)}
       />
-      <button name="request" type="submit">
+      <SearchButton name="request" type="submit">
         Search
-      </button>
+      </SearchButton>
     </SearchForm>
   );
 };

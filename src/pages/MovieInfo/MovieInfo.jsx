@@ -1,14 +1,16 @@
 import { Container } from './MovieInfo.styled';
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-// import {  useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import { searchMovieById } from '../../fetchApi';
+import { BtnGoBack } from '../../components/BtnGoBack/BtnGoBack';
 import { MovieDescription } from '../../components/MovieDesription/MovieDesription';
 
-export const MovieInfo = () => {
+const MovieInfo = () => {
   const [movie, setMovie] = useState({});
-  // const location = useLocation();
+  const location = useLocation();
   const { id } = useParams();
+  const backLinkHref = location.state?.from ?? '/';
 
   useEffect(() => {
     if (!id) return;
@@ -17,7 +19,8 @@ export const MovieInfo = () => {
 
   return (
     <Container>
-      <MovieDescription data={movie} />
+      <BtnGoBack to={backLinkHref}>Back to movies</BtnGoBack>
+      {movie !== {} && <MovieDescription data={movie} />}
     </Container>
   );
 };
@@ -30,3 +33,5 @@ const getFilmById = async id => {
     console.log(err);
   }
 };
+
+export default MovieInfo;

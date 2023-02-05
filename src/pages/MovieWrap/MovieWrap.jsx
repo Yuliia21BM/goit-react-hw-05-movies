@@ -5,7 +5,7 @@ import { SearchBar } from '../../components/SearchBar/SearchBar';
 import { Movielist } from '../../components/MovieList/MovieList';
 import { Container } from './MovieWrap.styled';
 
-export const MovieWrap = () => {
+const MovieWrap = () => {
   const [searchParams, setSearchParams] = useSearchParams();
 
   const movieName = searchParams.get('title') ?? '';
@@ -35,3 +35,4 @@ export const MovieWrap = () => {
     </Container>
   );
 };
+export default MovieWrap;

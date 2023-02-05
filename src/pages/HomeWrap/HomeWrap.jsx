@@ -4,7 +4,7 @@ import { Container, HomeTitle } from './HomeWrap.styled';
 import { getPopularFilm } from '../../fetchApi';
 import { Movielist } from '../../components/MovieList/MovieList';
 
-export const HomeWrap = () => {
+const HomeWrap = () => {
   const [movies, setMovies] = useState([]);
   const getTrending = async () => {
     try {
@@ -29,3 +29,5 @@ export const HomeWrap = () => {
     </Container>
   );
 };
+
+export default HomeWrap;
