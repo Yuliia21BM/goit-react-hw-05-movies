@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useParams } from 'react-router-dom';
 import { searchMovieCasts } from '../../fetchApi';
 import {
@@ -14,18 +14,20 @@ const MovieCast = () => {
   const { id } = useParams();
   const [cast, setCast] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+  const castRef = useRef();
 
   useEffect(() => {
     setIsLoading(true);
     if (!id) return;
     searchMovieCasts(id).then(({ cast }) => {
       setCast(cast);
+      castRef.current.scrollIntoView({ behavior: 'smooth' });
       setIsLoading(false);
     });
   }, [id]);
   const POSTER_URL = 'https://image.tmdb.org/t/p/w500';
   return (
-    <CastList>
+    <CastList ref={castRef}>
       {isLoading ? (
         <Spinner />
       ) : cast.length !== 0 ? (

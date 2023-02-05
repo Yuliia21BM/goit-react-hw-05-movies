@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { searchMovieReviews } from '../../fetchApi';
 import { useParams } from 'react-router-dom';
 import { Spinner } from 'components/Spenner-loader/Spinner-loader';
@@ -14,6 +14,7 @@ const MovieReview = () => {
   const { id } = useParams();
   const [review, setReview] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+  const reviewRef = useRef();
 
   useEffect(() => {
     setIsLoading(true);
@@ -21,16 +22,17 @@ const MovieReview = () => {
     searchMovieReviews(id).then(({ results }) => {
       if (!results || results === []) setReview([]);
       setReview(results);
+      reviewRef.current.scrollIntoView({ behavior: 'smooth' });
       setIsLoading(false);
     });
   }, [id]);
   return (
     <>
-      {isLoading ? (
-        <Spinner />
-      ) : review.length !== 0 ? (
-        <RewiewList>
-          {review.map(item => {
+      <RewiewList ref={reviewRef}>
+        {isLoading ? (
+          <Spinner />
+        ) : review.length !== 0 ? (
+          review.map(item => {
             return (
               <li key={item.id}>
                 <ReviewerTitle>
@@ -40,13 +42,13 @@ const MovieReview = () => {
                 <p>{item.content}</p>
               </li>
             );
-          })}
-        </RewiewList>
-      ) : (
-        <RevievDefaultText>
-          Sorry, we don`t have reviews for thit movie
-        </RevievDefaultText>
-      )}
+          })
+        ) : (
+          <RevievDefaultText>
+            Sorry, we don`t have reviews for thit movie
+          </RevievDefaultText>
+        )}
+      </RewiewList>
     </>
   );
 };
