@@ -31,7 +31,7 @@ const MovieWrap = () => {
   return (
     <Container>
       <SearchBar onSubmit={handleSubmitForm} />
-      <Movielist movies={movies} />
+      <Movielist movies={movies} isMoviePath={false} />
     </Container>
   );
 };

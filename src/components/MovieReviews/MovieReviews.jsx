@@ -2,7 +2,12 @@ import { useState, useEffect } from 'react';
 import { searchMovieReviews } from '../../fetchApi';
 import { useParams } from 'react-router-dom';
 
-import { ReviewerTitle, ReviewName, RewiewList } from './MovieReviews.styled';
+import {
+  ReviewerTitle,
+  ReviewName,
+  RewiewList,
+  RevievDefaultText,
+} from './MovieReviews.styled';
 
 const MovieReview = () => {
   const { id } = useParams();
@@ -10,13 +15,13 @@ const MovieReview = () => {
   useEffect(() => {
     if (!id) return;
     searchMovieReviews(id).then(({ results }) => {
-      if (!results || results === []) return;
+      if (!results || results === []) setReview([]);
       setReview(results);
     });
   }, [id]);
   return (
     <>
-      {review !== [] || !review ? (
+      {review.length !== 0 ? (
         <RewiewList>
           {review.map(item => {
             return (
@@ -31,7 +36,9 @@ const MovieReview = () => {
           })}
         </RewiewList>
       ) : (
-        <p>Sorry, we don`t have reviews for thit movie</p>
+        <RevievDefaultText>
+          Sorry, we don`t have reviews for thit movie
+        </RevievDefaultText>
       )}
     </>
   );

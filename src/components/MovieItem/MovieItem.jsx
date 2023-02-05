@@ -1,4 +1,5 @@
 import { useLocation } from 'react-router-dom';
+import defaultPoster from '../../images/default-poster.jpg';
 
 import {
   MovieLi,
@@ -8,19 +9,19 @@ import {
   MovieLink,
 } from './MovieItem.styled';
 
-export const MovieItem = ({ data }) => {
+export const MovieItem = ({ data, isMoviePath }) => {
   const location = useLocation();
   const POSTER_URL = 'https://image.tmdb.org/t/p/w500';
 
   return (
     <MovieLi data-film-id={data.id}>
-      <MovieLink to={`${data.id}`} state={{ from: location }}>
+      <MovieLink
+        to={`${isMoviePath ? `movies/${data.id}` : data.id}`}
+        state={{ from: location }}
+      >
         <img
           width="100%"
-          src={
-            data.poster_path ? POSTER_URL + data.poster_path : ''
-            //   defaultPoster.src
-          }
+          src={data.poster_path ? POSTER_URL + data.poster_path : defaultPoster}
           alt={data.title ? data.title : 'Unknown'}
           loading="lazy"
         ></img>

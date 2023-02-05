@@ -15,3 +15,8 @@ export const RewiewList = styled.ul`
   flex-direction: column;
   gap: 25px;
 `;
+
+export const RevievDefaultText = styled.p`
+  text-align: center;
+  padding: 20px;
+`;

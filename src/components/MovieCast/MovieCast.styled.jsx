@@ -25,4 +25,10 @@ export const CastItem = styled.li`
 
 export const CastName = styled.h1`
   font-size: 24px;
+  text-align: center;
+`;
+
+export const CastDefaultText = styled.p`
+  text-align: center;
+  padding: 20px;
 `;

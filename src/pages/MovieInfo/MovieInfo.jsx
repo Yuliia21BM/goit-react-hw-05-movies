@@ -10,7 +10,7 @@ const MovieInfo = () => {
   const [movie, setMovie] = useState({});
   const location = useLocation();
   const { id } = useParams();
-  const backLinkHref = location.state?.from ?? '/';
+  const backLinkHref = location.state?.from ?? '/movies';
 
   useEffect(() => {
     if (!id) return;

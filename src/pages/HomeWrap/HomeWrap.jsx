@@ -25,7 +25,7 @@ const HomeWrap = () => {
   return (
     <Container>
       <HomeTitle>Trending today</HomeTitle>
-      <Movielist movies={movies} />
+      <Movielist movies={movies} isMoviePath={true} />
     </Container>
   );
 };

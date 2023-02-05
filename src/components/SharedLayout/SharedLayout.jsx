@@ -16,7 +16,7 @@ export const SharedLayout = () => {
           <HeaderLink to="/" end>
             Home
           </HeaderLink>
-          <HeaderLink to="/movieWrap">Movies</HeaderLink>
+          <HeaderLink to="movies">Movies</HeaderLink>
         </HeaderNav>
       </Container>
       <ScrollToTop />

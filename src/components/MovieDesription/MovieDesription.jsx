@@ -10,6 +10,7 @@ import {
   MovieAdditionalLict,
   AdditionalItem,
 } from './MovieDesription.styled';
+import defaultPoster from '../../images/default-poster.jpg';
 
 export const MovieDescription = ({ data }) => {
   const POSTER_URL = 'https://image.tmdb.org/t/p/w500';
@@ -17,10 +18,7 @@ export const MovieDescription = ({ data }) => {
     <>
       <DescriptionMovie>
         <MovieImage
-          src={
-            data.poster_path ? POSTER_URL + data.poster_path : ''
-            //   defaultPoster.src
-          }
+          src={data.poster_path ? POSTER_URL + data.poster_path : defaultPoster}
           alt={data.title ? data.title : 'Unknown'}
           loading="lazy"
         ></MovieImage>
@@ -49,10 +47,10 @@ export const MovieDescription = ({ data }) => {
           <MovieAddition>Additional information:</MovieAddition>
           <MovieAdditionalLict>
             <li>
-              <AdditionalItem to="movieCast">Cast</AdditionalItem>
+              <AdditionalItem to="cast">Cast</AdditionalItem>
             </li>
             <li>
-              <AdditionalItem to="movieReview">Reviews</AdditionalItem>
+              <AdditionalItem to="reviews">Reviews</AdditionalItem>
             </li>
           </MovieAdditionalLict>
         </InfoMovie>

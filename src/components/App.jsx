@@ -10,21 +10,19 @@ const MovieReview = lazy(() =>
   import('../components/MovieReviews/MovieReviews')
 );
 const MovieCast = lazy(() => import('../components/MovieCast/MovieCast'));
+const DefaultPage = lazy(() => import('../pages/DefaultPage/DefaultPage'));
 
 export const App = () => {
   return (
     <Routes>
       <Route path="/" element={<SharedLayout />}>
         <Route index element={<HomeWrap />} />
-        <Route path="/:id" element={<MovieInfo />}>
-          <Route path="movieReview" element={<MovieReview />} />
-          <Route path="movieCast" element={<MovieCast />} />
+        <Route path="movies" element={<MovieWrap />} />
+        <Route path="movies/:id/" element={<MovieInfo />}>
+          <Route path="reviews" element={<MovieReview />} />
+          <Route path="cast" element={<MovieCast />} />
         </Route>
-        <Route path="movieWrap" element={<MovieWrap />} />
-        <Route path="movieWrap/:id" element={<MovieInfo />}>
-          <Route path="movieReview" element={<MovieReview />} />
-          <Route path="movieCast" element={<MovieCast />} />
-        </Route>
+        <Route path="*" element={<DefaultPage />} />
       </Route>
     </Routes>
   );
